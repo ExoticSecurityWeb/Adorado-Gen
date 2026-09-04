@@ -11,11 +11,8 @@ const os = require("os");
 const express = require('express');
 const chalk = require('chalk');
 
-// 1. Initialisation de la base de données Upstash Redis et du Bot
-const redis = new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN,
-});
+// 1. Initialisation de la base de données Upstash Redis (récupère automatiquement les variables d'env)
+const redis = Redis.from_env();
 
 const bot = new Client({
     intents: [
@@ -148,7 +145,6 @@ bot.on("interactionCreate", async interaction => {
             author: { name: botname + " - générateur de compte", url: "https://discord.gg/UezHmtRP7c", icon_url: bot.user.displayAvatarURL() }
         };
 
-        // Récupération et suppression sécurisée du premier compte dans Redis (LPOP)
         const account = await redis.lpop(`service:${service}`);
 
         if (!account) {
@@ -158,7 +154,6 @@ bot.on("interactionCreate", async interaction => {
         try {
             await interaction.user.send(`Voici votre compte **${service}** :\n\`${account}\``);
         } catch (e) {
-            // Remet le compte dans la liste si les MPs sont bloqués
             await redis.rpush(`service:${service}`, account);
             return interaction.reply({ content: "Impossible de vous envoyer un message privé. Vérifiez vos paramètres de confidentialité !", ephemeral: true });
         }
@@ -177,7 +172,7 @@ bot.on("interactionCreate", async interaction => {
         generated.add(interaction.user.id);
         setTimeout(() => {
             generated.delete(interaction.user.id);
-        }, 900000); // 15 minutes
+        }, 900000);
     }
 
     else if (commandName === "stats") {
@@ -218,7 +213,6 @@ bot.on("interactionCreate", async interaction => {
         const account = options.getString("compte");
         const service = options.getString("service").toLowerCase();
 
-        // Ajout du compte dans la liste Redis
         await redis.rpush(`service:${service}`, account);
 
         const embed = {
