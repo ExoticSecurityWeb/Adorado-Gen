@@ -6,6 +6,7 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "@upstash/redis": "^1.31.6",
     "async": "^3.2.5",
     "chalk": "^4.1.2",
     "discord.js": "^14.14.1",
