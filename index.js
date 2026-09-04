@@ -1,8 +1,16 @@
 const Discord = require("discord.js");
-const bot = new Discord.Client();
+
+// Variable stockant les intents nécessaires
+const mesIntents = [
+  Discord.GatewayIntentBits.Guilds,
+  Discord.GatewayIntentBits.GuildMessages,
+  Discord.GatewayIntentBits.MessageContent, // Indispensable pour lire le prefix dans les messages
+];
+
+const bot = new Discord.Client({ intents: mesIntents });
 const config = require("./config.json");
 const prefix = config.prefix;
-const botname = "GalackGen";
+const botname = "";
 const prefix1 = "+";
 var fs = require("fs");
 var lineReader = require("line-reader");
