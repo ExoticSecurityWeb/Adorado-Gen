@@ -1,13 +1,17 @@
 const Discord = require("discord.js");
 
-// Variable stockant les intents nécessaires
-const mesIntents = [
-  Discord.GatewayIntentBits.Guilds,
-  Discord.GatewayIntentBits.GuildMessages,
-  Discord.GatewayIntentBits.MessageContent, // Indispensable pour lire le prefix dans les messages
-];
+// 1. Déclaration de la variable d'options avec les intents
+const botOptions = {
+  intents: [
+    Discord.GatewayIntentBits.Guilds,
+    Discord.GatewayIntentBits.GuildMessages,
+    Discord.GatewayIntentBits.MessageContent
+  ]
+};
 
-const bot = new Discord.Client({ intents: mesIntents });
+// 2. On passe la variable au constructeur
+const bot = new Discord.Client(botOptions);
+
 const config = require("./config.json");
 const prefix = config.prefix;
 const botname = "";
