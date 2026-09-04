@@ -284,7 +284,7 @@ bot.on("message", message => {
                     image: {url:"https://i.imgur.com/XuVrWQh.png"},
                     author: {
                         name: botname + " - générateur de compte",
-                        url: "https://discord.gg/UezHmtRP7c
+                        url: "https://discord.gg/UezHmtRP7c"
                         icon_url: bot.displayAvatarURL
                     },
                     fields: []
