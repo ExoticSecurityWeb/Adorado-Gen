@@ -39,10 +39,10 @@ const chalk = require('chalk');
   console.log((chalk.yellow(`                                                               Crée par GalackQSM#2556 !`)));  
   console.log((chalk.yellow(`                                                                © 2020 GalackQSM, Inc.`))); 
   console.log("");                                   
-  console.log((chalk.red(`                                                         Discord: https://discord.gg/6czZmmtczp`)));   
-  console.log((chalk.red(`                                                       Twitter: https://twitter.com/Galack_QSM`)));   
+  console.log((chalk.red(`                                                         Discord: https://discord.gg/UezHmtRP7c`)));   
+  console.log((chalk.red(`                                                       Twitter: https://twitter.com/`)));   
   console.log((chalk.red(`                                                        Github: https://github.com/GalackQSM`)));   
-  console.log((chalk.red(`                                                        Youtube: https://youtube.com/GalackQSM`)));   
+  console.log((chalk.red(`                                                        Youtube: `)));   
   console.log("");                                  
 
   console.log(`Statistiques globales : \n\nLe bot a un total de ${bot.guilds.cache.size} serveurs. \nPour un total de ${bot.users.cache.size} membres.`)
@@ -85,7 +85,7 @@ bot.on("message", message => {
                     image: {url:"https://i.imgur.com/XuVrWQh.png"},
                     author: {
                         name: botname + " - générateur de compte",
-                        url: "https://discord.gg/6czZmmtczp",
+                        url: "https://discord.gg/UezHmtRP7c",
                         icon_url: bot.displayAvatarURL
                     },
                     fields: []
@@ -109,7 +109,7 @@ bot.on("message", message => {
                                     timestamp: new Date(),
                                     footer: {
                                         icon_url: "https://i.imgur.com/Bl8zjHy.png",
-                                        text: "Développé par GalackQSM#0895"
+                                        text: "Développé par Adorado#0895"
                                     },
                                     image: {
                                         url:
@@ -117,7 +117,7 @@ bot.on("message", message => {
                                     },
                                     author: {
                                         name: botname + " - générateur de compte",
-                                        url: "https://discord.gg/6czZmmtczp",
+                                        url: "https://discord.gg/UezHmtRP7c",
                                         icon_url: bot.displayAvatarURL
                                     },
                                     fields: []
@@ -143,12 +143,12 @@ bot.on("message", message => {
                             footer: {
                                 icon_url:
                                     "https://i.imgur.com/Bl8zjHy.png",
-                                text: "Développé par GalackQSM#2556"
+                                text: "Développé par Adorado#2556"
                             },
                             image: {url:"https://i.imgur.com/XuVrWQh.png"},
                             author: {
                                      name: botname + " - générateur de compte",
-                                     url: "https://discord.gg/6czZmmtczp",
+                                     url: "https://discord.gg/UezHmtRP7c",
                                 icon_url: bot.displayAvatarURL
                             },
                             fields: []
@@ -190,7 +190,7 @@ bot.on("message", message => {
                     url: 'https://discord.gg/6czZmmtczp',
                     author: {
                         name: 'Liste des commandes',
-                        url: 'https://discord.gg/6czZmmtczp',
+                        url: 'https://discord.gg/UezHmtRP7c',
                     },
                     image: {url:"https://i.imgur.com/XuVrWQh.png"},
 
@@ -247,7 +247,7 @@ bot.on("message", message => {
                     footer: {
                         icon_url:
                             "https://i.imgur.com/Bl8zjHy.png",
-                        text: "Développé par GalackQSM#2556"
+                        text: "Développé par Adorado#2556"
                     },
                     image: {url:"https://i.imgur.com/XuVrWQh.png"},
                     author: {
@@ -284,7 +284,7 @@ bot.on("message", message => {
                     image: {url:"https://i.imgur.com/XuVrWQh.png"},
                     author: {
                         name: botname + " - générateur de compte",
-                        url: "https://discord.gg/6czZmmtczp",
+                        url: "https://discord.gg/UezHmtRP7c
                         icon_url: bot.displayAvatarURL
                     },
                     fields: []
@@ -306,7 +306,7 @@ bot.on("message", message => {
                  image: {url:"https://i.imgur.com/XuVrWQh.png"},
                 author: {
                     name: botname + " - générateur de compte ",
-                    url: "https://discord.gg/6czZmmtczp",
+                    url: "https://discord.gg/UezHmtRP7c",
                     icon_url: bot.displayAvatarURL
                 },
                 fields: []
