@@ -12,7 +12,10 @@ const express = require('express');
 const chalk = require('chalk');
 
 // 1. Initialisation de la base de données Upstash Redis et du Bot
-const redis = Redis.from_env();
+const redis = new Redis({
+    url: process.env.UPSTASH_REDIS_REST_URL,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN,
+});
 
 const bot = new Client({
     intents: [
@@ -135,19 +138,9 @@ bot.on("interactionCreate", async interaction => {
 
         const service = options.getString("service").toLowerCase();
 
-        const embedNotFound = {
-            title: "Service non trouvé !",
-            description: "Le service demandé est introuvable !",
-            color: themeColor,
-            timestamp: new Date(),
-            footer: { icon_url: "https://i.imgur.com/Bl8zjHy.png", text: "Développé par Adorado#2556" },
-            image: { url: bannerUrl },
-            author: { name: botname + " - générateur de compte", url: "https://discord.gg/UezHmtRP7c", icon_url: bot.user.displayAvatarURL() }
-        };
-
         const embedStockOut = {
-            title: "En rupture de stock !",
-            description: "Le service que vous avez demandé est actuellement en rupture de stock !",
+            title: "En rupture de stock ou introuvable !",
+            description: "Le service que vous avez demandé est actuellement en rupture de stock ou n'existe pas !",
             color: themeColor,
             timestamp: new Date(),
             footer: { icon_url: "https://i.imgur.com/Bl8zjHy.png", text: "Développé par Adorado#2556" },
@@ -158,7 +151,7 @@ bot.on("interactionCreate", async interaction => {
         // Récupération et suppression sécurisée du premier compte dans Redis (LPOP)
         const account = await redis.lpop(`service:${service}`);
 
-        if (account === null || account === undefined) {
+        if (!account) {
             return interaction.reply({ embeds: [embedStockOut], ephemeral: true });
         }
 
