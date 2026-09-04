@@ -11,8 +11,11 @@ const os = require("os");
 const express = require('express');
 const chalk = require('chalk');
 
-// 1. Initialisation de la base de données Upstash Redis (récupère automatiquement les variables d'env)
-const redis = Redis.from_env();
+// 1. Initialisation propre de la base de données Upstash Redis en JS
+const redis = new Redis({
+    url: process.env.UPSTASH_REDIS_REST_URL,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN,
+});
 
 const bot = new Client({
     intents: [
