@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-// 1. Déclaration de la variable d'options avec les intents
+// 1. Déclaration des intents
 const botOptions = {
   intents: [
     Discord.GatewayIntentBits.Guilds,
@@ -26,7 +26,14 @@ var express = require('express');
 var app = express();
 const chalk = require('chalk');
 
-bot.on('ready', () => {
+// --- SERVEUR WEB POUR RENDER (Résout l'erreur de port fermé) ---
+const PORT = process.env.PORT || 3000;
+app.get('/', (req, res) => res.send('Adorado Gen est en ligne !'));
+app.listen(PORT, () => {
+    console.log(`Serveur Web actif sur le port ${PORT}`);
+});
+
+bot.on('clientReady', () => {
   console.log("");                                   
   console.log((chalk.cyan(`                                            #####                                      #####                `)));
   console.log((chalk.cyan(`                                           #     #   ##   #        ##    ####  #    # #     # ###### #    # `)));
