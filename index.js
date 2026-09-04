@@ -36,12 +36,12 @@ const chalk = require('chalk');
   console.log((chalk.cyan(`                                           #     # #    # #      #    # #    # #   #  #     # #      #   ## `)));
   console.log((chalk.cyan(`                                            #####  #    # ###### #    #  ####  #    #  #####  ###### #    # `)));
   console.log("");                                  
-  console.log((chalk.yellow(`                                                               Crée par GalackQSM#2556 !`)));  
-  console.log((chalk.yellow(`                                                                © 2020 GalackQSM, Inc.`))); 
+  console.log((chalk.yellow(`                                                               Crée par Adorado#2556 !`)));  
+  console.log((chalk.yellow(`                                                                © 2026 Adorado, Gen.`))); 
   console.log("");                                   
   console.log((chalk.red(`                                                         Discord: https://discord.gg/UezHmtRP7c`)));   
   console.log((chalk.red(`                                                       Twitter: https://twitter.com/`)));   
-  console.log((chalk.red(`                                                        Github: https://github.com/GalackQSM`)));   
+  console.log((chalk.red(`                                                        Github: https://github.com/`)));   
   console.log((chalk.red(`                                                        Youtube: `)));   
   console.log("");                                  
 
