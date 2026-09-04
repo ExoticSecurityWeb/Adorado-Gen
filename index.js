@@ -22,6 +22,8 @@ const bot = new Client({
 const config = require("./config.json");
 const botname = "Adorado Gen";
 const generated = new Set();
+const bannerUrl = "https://i.imgur.com/Z5ioo4B.jpeg"; // Lien direct Imgur mis à jour
+const themeColor = 0x00d2ff; // Bleu Cyan Néon
 
 // 2. Serveur Web pour Render (Maintien en ligne)
 const app = express();
@@ -100,7 +102,6 @@ bot.on('clientReady', async () => {
     console.log((chalk.yellow(`                                                                © 2026 Adorado, Gen.`))); 
     console.log("");                                   
 
-    // Enregistrement des commandes slash dans l'API Discord
     const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
     try {
         console.log("Mise à jour des commandes Slash (/)...");
@@ -117,7 +118,7 @@ bot.on('clientReady', async () => {
     bot.user.setActivity("/help - Adorado Gen");
 });
 
-// 5. Gestion des Interactions (Commandes Slash)
+// 5. Gestion des Interactions
 bot.on("interactionCreate", async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
@@ -137,20 +138,20 @@ bot.on("interactionCreate", async interaction => {
         const embedNotFound = {
             title: "Service non trouvé !",
             description: "Le service demandé est introuvable !",
-            color: 0xff033d,
+            color: themeColor,
             timestamp: new Date(),
             footer: { icon_url: "https://i.imgur.com/Bl8zjHy.png", text: "Développé par Adorado#2556" },
-            image: { url: "https://i.imgur.com/XuVrWQh.png" },
+            image: { url: bannerUrl },
             author: { name: botname + " - générateur de compte", url: "https://discord.gg/UezHmtRP7c", icon_url: bot.user.displayAvatarURL() }
         };
 
         const embedStockOut = {
             title: "En rupture de stock !",
             description: "Le service que vous avez demandé est actuellement en rupture de stock !",
-            color: 0xff033d,
+            color: themeColor,
             timestamp: new Date(),
             footer: { icon_url: "https://i.imgur.com/Bl8zjHy.png", text: "Développé par Adorado#2556" },
-            image: { url: "https://i.imgur.com/XuVrWQh.png" },
+            image: { url: bannerUrl },
             author: { name: botname + " - générateur de compte", url: "https://discord.gg/UezHmtRP7c", icon_url: bot.user.displayAvatarURL() }
         };
 
@@ -180,10 +181,10 @@ bot.on("interactionCreate", async interaction => {
                 const embedGen = {
                     title: "Compte " + service + " généré !",
                     description: "Le compte a été envoyé dans vos messages privés !",
-                    color: 0xff033d,
+                    color: themeColor,
                     timestamp: new Date(),
                     footer: { icon_url: "https://i.imgur.com/Bl8zjHy.png", text: "Développé par Adorado#2556" },
-                    image: { url: "https://i.imgur.com/X1QIYyS.gif" },
+                    image: { url: bannerUrl },
                     author: { name: botname + " - générateur de compte", url: "https://discord.gg/UezHmtRP7c", icon_url: bot.user.displayAvatarURL() }
                 };
 
@@ -200,10 +201,10 @@ bot.on("interactionCreate", async interaction => {
         const embed = {
             title: "Stats de " + botname,
             description: "Nombre total d'utilisateurs: `" + bot.users.cache.size + " membres`\nNombre total de salons: `" + bot.channels.cache.size + " salons`\nNombre total de serveurs: `" + bot.guilds.cache.size + " serveur(s)`\nCréé par Adorado#2556",
-            color: 0xff033d,
+            color: themeColor,
             timestamp: new Date(),
             footer: { icon_url: "https://i.imgur.com/Bl8zjHy.png", text: "Développé par Adorado#2556" },
-            image: { url: "https://i.imgur.com/XuVrWQh.png" },
+            image: { url: bannerUrl },
             author: { name: botname + " - générateur de compte", url: "https://discord.gg/UezHmtRP7c", icon_url: bot.user.displayAvatarURL() }
         };
         interaction.reply({ embeds: [embed] });
@@ -211,11 +212,11 @@ bot.on("interactionCreate", async interaction => {
 
     else if (commandName === "help") {
         const embed = {
-            color: 0xff033d,
+            color: themeColor,
             title: botname + ' - générateur de compte',
             url: 'https://discord.gg/UezHmtRP7c',
             author: { name: 'Liste des commandes Slash', url: 'https://discord.gg/UezHmtRP7c' },
-            image: { url: "https://i.imgur.com/XuVrWQh.png" },
+            image: { url: bannerUrl },
             description: '**Toutes les commandes s\'utilisent désormais avec `/`**',
             fields: [
                 { name: 'Générer un compte', value: "`/gen service:<nom>`" },
@@ -242,10 +243,10 @@ bot.on("interactionCreate", async interaction => {
             const embed = {
                 title: "Compte ajouté !",
                 description: "Compte ajouté avec succès au service `" + service + "` !",
-                color: 0xff033d,
+                color: themeColor,
                 timestamp: new Date(),
                 footer: { icon_url: "https://i.imgur.com/Bl8zjHy.png", text: "Développé par Adorado#2556" },
-                image: { url: "https://i.imgur.com/XuVrWQh.png" },
+                image: { url: bannerUrl },
                 author: { name: botname + " - générateur de compte", url: "https://discord.gg/UezHmtRP7c", icon_url: bot.user.displayAvatarURL() }
             };
             interaction.reply({ embeds: [embed] });
@@ -263,10 +264,10 @@ bot.on("interactionCreate", async interaction => {
             const embed = {
                 title: "Service créé !",
                 description: "Le service `" + service + "` a été créé avec succès !",
-                color: 0xff033d,
+                color: themeColor,
                 timestamp: new Date(),
                 footer: { icon_url: "https://i.imgur.com/Bl8zjHy.png", text: "Développé par Adorado#2556" },
-                image: { url: "https://i.imgur.com/XuVrWQh.png" },
+                image: { url: bannerUrl },
                 author: { name: botname + " - générateur de compte", url: "https://discord.gg/UezHmtRP7c", icon_url: bot.user.displayAvatarURL() }
             };
             interaction.reply({ embeds: [embed] });
